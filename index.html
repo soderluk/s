@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>S by zquestz</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>S</h1>
+        <p>Open a web search in your terminal.</p>
+
+        <p class="view"><a href="https://github.com/zquestz/s">View the Project on GitHub <small>zquestz/s</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/zquestz/s/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/zquestz/s/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/zquestz/s">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="s" class="anchor" href="#s" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>s</h1>
+
+<p>Web search from the terminal. Just opens your default browser.</p>
+
+<pre><code>Usage:
+  s &lt;query&gt; [flags]
+
+Flags:
+  -b, --binary string     binary to launch search uri
+  -l, --list-providers    list supported providers
+  -p, --provider string   set search provider (default "google")
+  -v, --verbose           display url when opening
+      --version           display version
+</code></pre>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<pre><code>go get -v github.com/zquestz/s
+cd $GOPATH/src/github.com/zquestz/s
+make
+make install
+</code></pre>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Search for puppies on google.</p>
+
+<pre><code>s puppies
+</code></pre>
+
+<p>Search for a wifi router on amazon</p>
+
+<pre><code>s -p amazon wifi router
+</code></pre>
+
+<p>Search for rhinos on wikipedia</p>
+
+<pre><code>s -p wikipedia rhinos
+</code></pre>
+
+<h2>
+<a id="provider-expansion" class="anchor" href="#provider-expansion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider Expansion</h2>
+
+<p>We can do partial matching of provider names. This searches Facebook for hamsters.</p>
+
+<pre><code>s -p f hamsters
+</code></pre>
+
+<p>Or toasters on amazon.</p>
+
+<pre><code>s -p a toasters
+</code></pre>
+
+<h2>
+<a id="advanced" class="anchor" href="#advanced" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advanced</h2>
+
+<p>Setup an alias in your <code>.profile</code> for your favorite providers.</p>
+
+<pre><code>alias sa="s -p amazon"
+alias sw="s -p wikipedia"
+</code></pre>
+
+<p>Use w3m to find cats instead of just your default browser.</p>
+
+<pre><code>s -b w3m cats
+</code></pre>
+
+<h2>
+<a id="supported-providers" class="anchor" href="#supported-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Providers</h2>
+
+<ul>
+<li>8tracks</li>
+<li>amazon</li>
+<li>atmospherejs</li>
+<li>baidu</li>
+<li>bandcamp</li>
+<li>bing</li>
+<li>codepen</li>
+<li>coursera</li>
+<li>crunchyroll</li>
+<li>digg</li>
+<li>dockerhub</li>
+<li>dribbble</li>
+<li>duckduckgo</li>
+<li>dumpert</li>
+<li>facebook</li>
+<li>flickr</li>
+<li>foursquare</li>
+<li>gist</li>
+<li>github</li>
+<li>gmail</li>
+<li>go</li>
+<li>godoc</li>
+<li>google</li>
+<li>hackernews</li>
+<li>ietf</li>
+<li>imdb</li>
+<li>imgur</li>
+<li>kickasstorrents</li>
+<li>libgen</li>
+<li>macports</li>
+<li>mdn</li>
+<li>msdn</li>
+<li>nhaccuatui</li>
+<li>npm</li>
+<li>npmsearch</li>
+<li>nvd</li>
+<li>packagist</li>
+<li>php</li>
+<li>pinterest</li>
+<li>python</li>
+<li>quora</li>
+<li>reddit</li>
+<li>rubygems</li>
+<li>soundcloud</li>
+<li>spotify</li>
+<li>stackoverflow</li>
+<li>steam</li>
+<li>taobao</li>
+<li>thepiratebay</li>
+<li>twitchtv</li>
+<li>twitter</li>
+<li>unity3d</li>
+<li>vimeo</li>
+<li>wikipedia</li>
+<li>wolframalpha</li>
+<li>yahoo</li>
+<li>yandex</li>
+<li>youtube</li>
+</ul>
+
+<h4>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributors</h4>
+
+<ul>
+<li><a href="https://github.com/zquestz/">Josh Ellithorpe (zquestz)</a></li>
+<li><a href="https://github.com/fnky/">Christian Petersen (fnky)</a></li>
+<li><a href="https://github.com/mbhinder/">Preet Bhinder (mbhinder)</a></li>
+<li><a href="https://github.com/KeizerDev/">Robert-Jan Keizer (KeizerDev)</a></li>
+<li><a href="https://github.com/vekat/">Vitor Cortez (vekat)</a></li>
+<li><a href="https://github.com/tw4dl/">David Liu (tw4dl)</a></li>
+<li><a href="http://github.com/akb/">Lex Broner (akb)</a></li>
+<li><a href="https://github.com/djap96/">Diego Jara (djap96)</a></li>
+</ul>
+
+<h4>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h4>
+
+<p>s is released under the MIT license.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/zquestz">zquestz</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
