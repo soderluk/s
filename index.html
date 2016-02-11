@@ -32,10 +32,14 @@
   s &lt;query&gt; [flags]
 
 Flags:
-  -b, --binary string     binary to launch search uri
+  -b, --binary string     binary to launch search URI
+  -c, --cert string       path to cert.pem for TLS
+  -k, --key string        path to key.pem for TLS
   -l, --list-providers    list supported providers
+      --port int          server port (default 8080)
   -p, --provider string   set search provider (default "google")
-  -v, --verbose           display url when opening
+  -s, --server            launch web server
+  -v, --verbose           display URL when opening
       --version           display version
 </code></pre>
 
@@ -71,12 +75,34 @@ make install
 
 <p>We can do partial matching of provider names. This searches Facebook for hamsters.</p>
 
-<pre><code>s -p f hamsters
+<pre><code>s -p fa hamsters
 </code></pre>
 
 <p>Or toasters on amazon.</p>
 
-<pre><code>s -p a toasters
+<pre><code>s -p am toasters
+</code></pre>
+
+<h2>
+<a id="provider-autocompletion" class="anchor" href="#provider-autocompletion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider Autocompletion</h2>
+
+<p>Autocompletion for providers is supported. For setting up autocompletion:</p>
+
+<ol>
+<li>Have <code>s</code> installed</li>
+<li>Add the following lines to <code>~/.bash_profile</code> or <code>~/.zshrc</code>
+</li>
+</ol>
+
+<pre><code>if [ -f $GOPATH/src/github.com/zquestz/s/autocomplete/s-completion.bash ]; then
+    . $GOPATH/src/github.com/zquestz/s/autocomplete/s-completion.bash
+fi
+</code></pre>
+
+<p>Now you are good to go.</p>
+
+<pre><code>s -p ba&lt;TAB&gt;&lt;TAB&gt;
+baidu     bandcamp
 </code></pre>
 
 <h2>
@@ -93,26 +119,58 @@ alias sw="s -p wikipedia"
 <pre><code>s -b w3m cats
 </code></pre>
 
+<p>Search for conspiracy theories in incognito mode.</p>
+
+<pre><code>s -b "chromium --incognito" conspiracy theories
+s -b "firefox --private-window" conspiracy theories
+</code></pre>
+
+<p>Search in a specific subreddit.</p>
+
+<pre><code>s -p reddit /r/cscareerquestions best startups.
+</code></pre>
+
+<h2>
+<a id="server-mode" class="anchor" href="#server-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Server Mode</h2>
+
+<p>A web interface is also provided. Just pass the <code>-s</code> flag.</p>
+
+<p>Start a server on port 8080 (default).</p>
+
+<pre><code>s -s
+</code></pre>
+
+<p>Start a server with TLS on port 8443.</p>
+
+<pre><code>s -s -c /path/to/cert.pem -k /path/to/key.pem --port 8443
+</code></pre>
+
 <h2>
 <a id="supported-providers" class="anchor" href="#supported-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Providers</h2>
 
 <ul>
+<li>500px</li>
 <li>8tracks</li>
 <li>amazon</li>
+<li>arstechnica</li>
+<li>arxiv</li>
 <li>atmospherejs</li>
 <li>baidu</li>
 <li>bandcamp</li>
 <li>bing</li>
 <li>codepen</li>
 <li>coursera</li>
+<li>cplusplus</li>
 <li>crunchyroll</li>
 <li>digg</li>
+<li>diigo</li>
 <li>dockerhub</li>
 <li>dribbble</li>
 <li>duckduckgo</li>
 <li>dumpert</li>
 <li>facebook</li>
 <li>flickr</li>
+<li>flipkart</li>
 <li>foursquare</li>
 <li>gist</li>
 <li>github</li>
@@ -120,19 +178,27 @@ alias sw="s -p wikipedia"
 <li>go</li>
 <li>godoc</li>
 <li>google</li>
+<li>googleplus</li>
 <li>hackernews</li>
 <li>ietf</li>
+<li>ifttt</li>
 <li>imdb</li>
 <li>imgur</li>
+<li>inbox</li>
+<li>instagram</li>
 <li>kickasstorrents</li>
 <li>libgen</li>
+<li>linkedin</li>
+<li>lmgtfy</li>
 <li>macports</li>
 <li>mdn</li>
 <li>msdn</li>
+<li>naver</li>
 <li>nhaccuatui</li>
 <li>npm</li>
 <li>npmsearch</li>
 <li>nvd</li>
+<li>overstock</li>
 <li>packagist</li>
 <li>php</li>
 <li>pinterest</li>
@@ -146,9 +212,11 @@ alias sw="s -p wikipedia"
 <li>steam</li>
 <li>taobao</li>
 <li>thepiratebay</li>
+<li>torrentz</li>
 <li>twitchtv</li>
 <li>twitter</li>
 <li>unity3d</li>
+<li>upcloud</li>
 <li>vimeo</li>
 <li>wikipedia</li>
 <li>wolframalpha</li>
@@ -169,6 +237,8 @@ alias sw="s -p wikipedia"
 <li><a href="https://github.com/tw4dl/">David Liu (tw4dl)</a></li>
 <li><a href="http://github.com/akb/">Lex Broner (akb)</a></li>
 <li><a href="https://github.com/djap96/">Diego Jara (djap96)</a></li>
+<li><a href="https://github.com/lkhamsurenl/">Luvsandondov Lkhamsuren (lkhamsurenl)</a></li>
+<li><a href="https://github.com/erayaydin/">Eray Aydın (erayaydin)</a></li>
 </ul>
 
 <h4>
