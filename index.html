@@ -28,7 +28,9 @@
         </ul>
       </header>
       <section>
-        <pre><code>Usage:
+        <p><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/express.svg" alt="License"></a> <a href="http://goreportcard.com/report/zquestz/s"><img src="http://goreportcard.com/badge/zquestz/s" alt="ReportCard"></a> <a href="http://travis-ci.org/zquestz/s"><img src="https://travis-ci.org/zquestz/s.svg?branch=master" alt="Build"></a> <a href="https://github.com/zquestz/s/releases/tag/v0.4.1"><img src="http://img.shields.io/badge/release-v0.4.1-1eb0fc.svg" alt="Release"></a></p>
+
+<pre><code>Usage:
   s &lt;query&gt; [flags]
 
 Flags:
@@ -105,6 +107,15 @@ fi
 baidu     bandcamp
 </code></pre>
 
+<h3>
+<a id="fish" class="anchor" href="#fish" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Fish</h3>
+
+<p>Alternatively, if you use <a href="http://fishshell.com/">fish</a>, the following will work:</p>
+
+<pre><code>mkdir -p ~/.config/fish/completions
+ln -s $GOPATH/src/github.com/zquestz/s/autocomplete/s.fish ~/.config/fish/completions/s.fish
+</code></pre>
+
 <h2>
 <a id="advanced" class="anchor" href="#advanced" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Advanced</h2>
 
@@ -144,6 +155,8 @@ s -b "firefox --private-window" conspiracy theories
 
 <pre><code>s -s -c /path/to/cert.pem -k /path/to/key.pem --port 8443
 </code></pre>
+
+<p>Feel free to try it out at <a href="https://jumps.io/">https://jumps.io/</a>.</p>
 
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
