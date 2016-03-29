@@ -28,7 +28,7 @@
         </ul>
       </header>
       <section>
-        <p><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/express.svg" alt="License"></a> <a href="http://goreportcard.com/report/zquestz/s"><img src="http://goreportcard.com/badge/zquestz/s" alt="ReportCard"></a> <a href="http://travis-ci.org/zquestz/s"><img src="https://travis-ci.org/zquestz/s.svg?branch=master" alt="Build"></a> <a href="https://github.com/zquestz/s/releases/tag/v0.4.5"><img src="http://img.shields.io/badge/release-v0.4.5-1eb0fc.svg" alt="Release"></a> <a href="https://gitter.im/zquestz/s?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/zquestz/s.svg" alt="Chat"></a></p>
+        <p><a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/express.svg" alt="License"></a> <a href="http://goreportcard.com/report/zquestz/s"><img src="http://goreportcard.com/badge/zquestz/s" alt="ReportCard"></a> <a href="http://travis-ci.org/zquestz/s"><img src="https://travis-ci.org/zquestz/s.svg?branch=master" alt="Build"></a> <a href="https://github.com/zquestz/s/releases/tag/v0.5.0"><img src="http://img.shields.io/badge/release-v0.5.0-1eb0fc.svg" alt="Release"></a> <a href="https://gitter.im/zquestz/s?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/zquestz/s.svg" alt="Chat"></a></p>
 
 <pre><code>Usage:
   s &lt;query&gt; [flags]
@@ -38,11 +38,14 @@ Flags:
   -c, --cert string       path to cert.pem for TLS
   -k, --key string        path to key.pem for TLS
   -l, --list-providers    list supported providers
+      --list-tags         list available tags
       --port int          server port (default 8080)
   -p, --provider string   search provider (default "google")
   -s, --server            launch web server
-  -v, --verbose           display URL when opening
+  -t, --tag string        search tag
+  -v, --verbose           verbose mode
       --version           display version
+
 </code></pre>
 
 <h2>
@@ -77,10 +80,15 @@ make install
 <pre><code>s -p wikipedia rhinos
 </code></pre>
 
-<h2>
-<a id="provider-expansion" class="anchor" href="#provider-expansion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider Expansion</h2>
+<p>Search providers tagged "video" for muppets.</p>
 
-<p>We can do partial matching of provider names. This searches Facebook for hamsters.</p>
+<pre><code>s -t video muppets
+</code></pre>
+
+<h2>
+<a id="providertag-expansion" class="anchor" href="#providertag-expansion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider/Tag Expansion</h2>
+
+<p>We can do partial matching of provider and tag names. This searches Facebook for hamsters.</p>
 
 <pre><code>s -p fa hamsters
 </code></pre>
@@ -90,10 +98,20 @@ make install
 <pre><code>s -p am toasters
 </code></pre>
 
-<h2>
-<a id="provider-autocompletion" class="anchor" href="#provider-autocompletion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider Autocompletion</h2>
+<p>This searches "tech-news" tagged providers for ssd info.</p>
 
-<p>Autocompletion for providers is supported. For setting up autocompletion:</p>
+<pre><code>s -t te ssd
+</code></pre>
+
+<p>Or shopping sites for blankets.</p>
+
+<pre><code>s -t sh blankets
+</code></pre>
+
+<h2>
+<a id="providertag-autocompletion" class="anchor" href="#providertag-autocompletion" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider/Tag Autocompletion</h2>
+
+<p>Autocompletion is supported for providers and tags. To set up autocompletion:</p>
 
 <ol>
 <li>Have <code>s</code> installed</li>
@@ -181,7 +199,8 @@ s -b "firefox --private-window" conspiracy theories
 <li>key (path to key.pem for TLS)</li>
 <li>port (server port)</li>
 <li>provider (search provider)</li>
-<li>verbose (display URL when opening)</li>
+<li>tag (search tag)</li>
+<li>verbose (verbose mode)</li>
 <li>whitelist (array of providers to include)</li>
 </ul>
 
@@ -206,6 +225,7 @@ s -b "firefox --private-window" conspiracy theories
   {
     name: example
     url: "http://example.com?q=%s"
+    tags: [example]
   }
 ]
 </code></pre>
@@ -260,6 +280,7 @@ s -b "firefox --private-window" conspiracy theories
 <li>go</li>
 <li>godoc</li>
 <li>google</li>
+<li>googledocs</li>
 <li>googleplus</li>
 <li>hackernews</li>
 <li>ietf</li>
@@ -274,6 +295,7 @@ s -b "firefox --private-window" conspiracy theories
 <li>lmgtfy</li>
 <li>macports</li>
 <li>mdn</li>
+<li>medium</li>
 <li>metacpan</li>
 <li>msdn</li>
 <li>naver</li>
