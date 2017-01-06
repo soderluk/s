@@ -1,0 +1,8 @@
+title: s
+description: Open a web search in your terminal.
+google_analytics: UA-17656782-1
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
