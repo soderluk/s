@@ -10,6 +10,7 @@ Flags:
   -k, --key string        path to key.pem for TLS
   -l, --list-providers    list supported providers
       --list-tags         list available tags
+  -o, --output            output only mode
       --port int          server port (default 8080)
   -p, --provider string   search provider (default "google")
   -s, --server            launch web server
@@ -28,6 +29,14 @@ make
 make install
 ```
 
+If you have issues building s, you can vendor the dependencies by using [gvt](https://github.com/FiloSottile/gvt):
+
+```
+go get -u github.com/FiloSottile/gvt
+cd $GOPATH/src/github.com/zquestz/s
+gvt restore
+```
+
 Alternatively, you can use Homebrew:
 
 ```
@@ -37,21 +46,25 @@ brew install s-search
 ## Examples
 
 Search for puppies on google.
+
 ```
 s puppies
 ```
 
 Search for a wifi router on amazon
+
 ```
 s -p amazon wifi router
 ```
 
 Search for rhinos on wikipedia
+
 ```
 s -p wikipedia rhinos
 ```
 
 Search providers tagged "video" for muppets.
+
 ```
 s -t video muppets
 ```
@@ -59,21 +72,25 @@ s -t video muppets
 ## Provider/Tag Expansion
 
 We can do partial matching of provider and tag names. This searches Facebook for hamsters.
+
 ```
 s -p fa hamsters
 ```
 
 Or toasters on amazon.
+
 ```
 s -p am toasters
 ```
 
 This searches "tech-news" tagged providers for ssd info.
+
 ```
 s -t te ssd
 ```
 
 Or shopping sites for blankets.
+
 ```
 s -t sh blankets
 ```
@@ -84,6 +101,7 @@ Autocompletion is supported for providers and tags. To set up autocompletion:
 
 1. Have `s` installed
 2. Add the following lines to `~/.bash_profile` or `~/.zshrc`
+
 ```
 if [ -f $GOPATH/src/github.com/zquestz/s/autocomplete/s-completion.bash ]; then
     . $GOPATH/src/github.com/zquestz/s/autocomplete/s-completion.bash
@@ -91,6 +109,7 @@ fi
 ```
 
 Now you are good to go.
+
 ```
 s -p ba<TAB><TAB>
 baidu     bandcamp
@@ -99,6 +118,7 @@ baidu     bandcamp
 ### Fish
 
 Alternatively, if you use [fish](http://fishshell.com/), the following will work:
+
 ```
 mkdir -p ~/.config/fish/completions
 ln -s $GOPATH/src/github.com/zquestz/s/autocomplete/s.fish ~/.config/fish/completions/s.fish
@@ -107,23 +127,27 @@ ln -s $GOPATH/src/github.com/zquestz/s/autocomplete/s.fish ~/.config/fish/comple
 ## Advanced
 
 Setup an alias in your `.profile` for your favorite providers.
+
 ```
 alias sa="s -p amazon"
 alias sw="s -p wikipedia"
 ```
 
 Use w3m to find cats instead of just your default browser.
+
 ```
 s -b w3m cats
 ```
 
 Search for conspiracy theories in incognito mode.
+
 ```
 s -b "chromium --incognito" conspiracy theories
 s -b "firefox --private-window" conspiracy theories
 ```
 
 Search in a specific subreddit.
+
 ```
 s -p reddit /r/cscareerquestions best startups.
 ```
@@ -133,11 +157,13 @@ s -p reddit /r/cscareerquestions best startups.
 A web interface is also provided. Just pass the `-s` flag.
 
 Start a server on port 8080 (default).
+
 ```
 s -s
 ```
 
 Start a server with TLS on port 8443.
+
 ```
 s -s -c /path/to/cert.pem -k /path/to/key.pem --port 8443
 ```
@@ -158,6 +184,7 @@ The following keys are supported:
 * cert (path to cert.pem for TLS)
 * customProviders (array of custom providers)
 * key (path to key.pem for TLS)
+* output (output only mode)
 * port (server port)
 * provider (search provider)
 * tag (search tag)
@@ -165,21 +192,25 @@ The following keys are supported:
 * whitelist (array of providers to include)
 
 Set your default provider to duckduckgo:
+
 ```
 provider: duckduckgo
 ```
 
 To only search a few providers:
+
 ```
 whitelist: [google, amazon, wikipedia]
 ```
 
 To exclude providers you don't need:
+
 ```
 blacklist: [dumpert]
 ```
 
 To add a custom provider:
+
 ```
 customProviders [
   {
@@ -191,6 +222,7 @@ customProviders [
 ```
 
 Custom providers require a few things:
+
 * An alphanumeric name. `^[a-zA-Z0-9_]*$`
 * A `%s` token for the query string.
 * A valid URL scheme.
@@ -215,6 +247,7 @@ Custom providers require a few things:
 * codepen
 * coursera
 * cplusplus
+* crates
 * crunchyroll
 * debianpkg
 * digg
@@ -270,6 +303,7 @@ Custom providers require a few things:
 * reddit
 * rottentomatoes
 * rubygems
+* shodan
 * soundcloud
 * spotify
 * stackoverflow
@@ -289,7 +323,7 @@ Custom providers require a few things:
 * yandex
 * youtube
 
-#### Contributors
+## Contributors
 
 * [Josh Ellithorpe (zquestz)](https://github.com/zquestz/)
 * [Christian Petersen (fnky)](https://github.com/fnky/)
@@ -303,17 +337,17 @@ Custom providers require a few things:
 * [Eray Aydın (erayaydin)](https://github.com/erayaydin/)
 * [Murilo Santana (mvrilo)](https://github.com/mvrilo/)
 
-#### License
+## License
 
 s is released under the MIT license.
 
 [License-URL]: http://opensource.org/licenses/MIT
 [License-Image]: https://img.shields.io/npm/l/express.svg
 [ReportCard-URL]: http://goreportcard.com/report/zquestz/s
-[ReportCard-Image]: http://goreportcard.com/badge/zquestz/s
+[ReportCard-Image]: https://goreportcard.com/badge/github.com/zquestz/s
 [Build-Status-URL]: http://travis-ci.org/zquestz/s
 [Build-Status-Image]: https://travis-ci.org/zquestz/s.svg?branch=master
-[Release-URL]: https://github.com/zquestz/s/releases/tag/v0.5.2
-[Release-Image]: http://img.shields.io/badge/release-v0.5.2-1eb0fc.svg
+[Release-URL]: https://github.com/zquestz/s/releases/tag/v0.5.8
+[Release-Image]: https://img.shields.io/badge/release-v0.5.8-1eb0fc.svg
 [Chat-Image]: https://badges.gitter.im/zquestz/s.svg
 [Chat-URL]: https://gitter.im/zquestz/s?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
